@@ -29,10 +29,13 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install --include=dev
+        run: npm install
+
+      - name: Pastikan Vite tersedia
+        run: npm install -D vite @vitejs/plugin-react
 
       - name: Build aplikasi
-        run: npx vite build
+        run: npm run build
 
       - name: Upload hasil build
         uses: actions/upload-pages-artifact@v3
