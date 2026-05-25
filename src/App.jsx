@@ -2512,7 +2512,7 @@ function KarsaLogo({ className = "", fallbackClassName = "", ...props }) {
 
   if (failed) {
     return (
-      <div {...props} className={cx("grid h-full w-full place-items-center rounded-[inherit] bg-white text-center text-[11px] font-black uppercase tracking-widest text-slate-700", fallbackClassName)}>
+      <div {...props} className={cx("grid h-full w-full place-items-center rounded-[inherit] bg-transparent text-center text-[11px] font-black uppercase tracking-widest text-white", fallbackClassName)}>
         KARSA
       </div>
     );
@@ -2716,10 +2716,8 @@ function LoginScreen({ onLogin, onForgotPin, syncing, lastSync }) {
       <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-[430px] flex-col justify-center">
         <div className="mb-6 text-center text-white">
           <div className="relative mx-auto mb-4 h-28 w-28">
-            <div className="absolute inset-0 rounded-[2.4rem] bg-white/18 blur-xl" />
-            <div className="relative grid h-full w-full place-items-center rounded-[2.2rem] border border-white/25 bg-white/90 p-3 shadow-2xl shadow-fuchsia-500/20 backdrop-blur">
-              <KarsaLogo className="h-full w-full object-contain" />
-            </div>
+            <div className="absolute inset-0 rounded-full bg-white/18 blur-xl" />
+            <KarsaLogo className="relative h-full w-full object-contain drop-shadow-2xl" fallbackClassName="relative h-full w-full rounded-full bg-white/10 text-white shadow-2xl" />
           </div>
           <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] ring-1 ring-white/25 backdrop-blur">
             <Sparkles size={14} /> Absensi Online
