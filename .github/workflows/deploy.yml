@@ -1,4 +1,4 @@
-﻿name: Deploy React Vite to GitHub Pages
+﻿name: Deploy dist to GitHub Pages
 
 on:
   push:
@@ -16,37 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Ambil kode repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install --include=dev --no-audit --no-fund
-
-      - name: Pastikan Vite tersedia
-        run: npm install --save-dev vite @vitejs/plugin-react --no-audit --no-fund
-
-      - name: Cek Vite
-        run: npx vite --version
-
-      - name: Build aplikasi
-        run: npx vite build
-
-      - name: Upload hasil build
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
 
     environment:
@@ -54,6 +24,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Ambil kode repository
+        uses: actions/checkout@v4
+
+      - name: Cek isi dist
+        run: ls -la dist
+
+      - name: Upload folder dist
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
       - name: Deploy ke GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
