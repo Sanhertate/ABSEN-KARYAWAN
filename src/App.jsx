@@ -125,13 +125,21 @@ const FIREBASE_TIMEOUT_MS = 12000;
 
 const COMPANY_NAME = "PT. Karsa Sentana Lumbung Sentosa";
 // Logo lokal dari folder public. Simpan file di: public/logo-pt-karsa.png
-// Vite akan menyalin file public ke hasil build, jadi aman untuk Web dan Android/Capacitor.
-// Jangan pakai URL luar untuk canvas, supaya foto bukti tidak gagal saat canvas.toDataURL().
-const COMPANY_LOGO_URL = "/logo-pt-karsa.png";
+// GitHub Pages memakai base path /ABSEN-KARYAWAN/, jadi URL logo tidak boleh hardcode dari root "/".
+// Vite akan otomatis mengisi import.meta.env.BASE_URL sesuai konfigurasi base di vite.config.js.
+function publicAsset(path = "") {
+  const base = String(import.meta?.env?.BASE_URL || "/");
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = String(path || "").replace(/^\/+/, "");
+  return `${cleanBase}${cleanPath}`;
+}
+
+const COMPANY_LOGO_URL = publicAsset("logo-pt-karsa.png");
 const COMPANY_LOGO_CANDIDATES = [
-  "/logo-pt-karsa.png",
+  publicAsset("logo-pt-karsa.png"),
   "./logo-pt-karsa.png",
-  "/assets/logo-pt-karsa.png",
+  "logo-pt-karsa.png",
+  publicAsset("assets/logo-pt-karsa.png"),
   "./assets/logo-pt-karsa.png",
 ];
 
@@ -2499,6 +2507,20 @@ function LoadingOverlay({ label = "Memproses..." }) {
   );
 }
 
+function KarsaLogo({ className = "", fallbackClassName = "", ...props }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <div {...props} className={cx("grid h-full w-full place-items-center rounded-[inherit] bg-white text-center text-[11px] font-black uppercase tracking-widest text-slate-700", fallbackClassName)}>
+        KARSA
+      </div>
+    );
+  }
+
+  return <img {...props} src={COMPANY_LOGO_URL} alt="Logo Karsa" className={className} onError={() => setFailed(true)} />;
+}
+
 function LoginTransitionOverlay() {
   return (
     <div className="pointer-events-none fixed inset-0 z-[140] grid place-items-center overflow-hidden bg-white">
@@ -2530,10 +2552,9 @@ function LoginTransitionOverlay() {
         className="absolute h-[160%] w-20 bg-white/70 blur-xl"
         style={{ animation: "karsaLoginLightSweep 720ms ease-out forwards" }}
       />
-      <img
-        src={COMPANY_LOGO_URL}
-        alt="Logo Karsa"
+      <KarsaLogo
         className="relative z-10 h-28 w-28 object-contain drop-shadow-2xl will-change-transform"
+        fallbackClassName="relative z-10 h-28 w-28 rounded-[2rem] shadow-2xl will-change-transform"
         style={{ animation: "karsaLoginFloatLogo 720ms cubic-bezier(0.16,1,0.3,1) forwards" }}
       />
     </div>
@@ -2697,7 +2718,7 @@ function LoginScreen({ onLogin, onForgotPin, syncing, lastSync }) {
           <div className="relative mx-auto mb-4 h-28 w-28">
             <div className="absolute inset-0 rounded-[2.4rem] bg-white/18 blur-xl" />
             <div className="relative grid h-full w-full place-items-center rounded-[2.2rem] border border-white/25 bg-white/90 p-3 shadow-2xl shadow-fuchsia-500/20 backdrop-blur">
-              <img src={COMPANY_LOGO_URL} alt="Logo" className="h-full w-full object-contain" />
+              <KarsaLogo className="h-full w-full object-contain" />
             </div>
           </div>
           <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] ring-1 ring-white/25 backdrop-blur">
@@ -3017,7 +3038,7 @@ function LeftTool({ screen, setScreen, currentUser, onRefresh, syncing, onLogout
 
   return (
     <aside className="hidden">
-      <img src={COMPANY_LOGO_URL} alt="Logo" className="h-14 w-14 object-contain" />
+      <KarsaLogo className="h-14 w-14 object-contain" />
 
       <div className="mt-5 flex w-full flex-1 flex-col items-center gap-2">
         {navItems.map((item) => {
@@ -4459,7 +4480,7 @@ function CaptureModal({ action, currentUser, onClose, onSave, serverTimeOffsetMs
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
                     <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white p-1.5 shadow-lg">
-                      <img src={COMPANY_LOGO_URL} alt="Logo" className="h-full w-full object-contain" />
+                      <KarsaLogo className="h-full w-full object-contain" />
                     </div>
                     <div className="min-w-0">
                       <p className="truncate text-sm font-black text-white">Karsa Sentana</p>
