@@ -1,0 +1,21 @@
+<!--
+Tambahkan permission ini di:
+android/app/src/main/AndroidManifest.xml
+
+Letakkan DI ATAS tag <application>.
+-->
+
+<uses-permission android:name="android.permission.INTERNET" />
+
+<!-- Kamera untuk absensi foto/selfie -->
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-feature android:name="android.hardware.camera" android:required="false" />
+
+<!-- Lokasi GPS untuk absensi -->
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-feature android:name="android.hardware.location.gps" android:required="false" />
+
+<!-- Pilih foto/lampiran dari perangkat -->
+<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />

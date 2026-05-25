@@ -1,0 +1,27 @@
+[debug] [2026-05-25T00:37:05.276Z] ----------------------------------------------------------------------
+[debug] [2026-05-25T00:37:05.279Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Saniman\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2026-05-25T00:37:05.279Z] CLI Version:   15.18.0
+[debug] [2026-05-25T00:37:05.279Z] Platform:      win32
+[debug] [2026-05-25T00:37:05.279Z] Node Version:  v24.14.0
+[debug] [2026-05-25T00:37:05.279Z] Time:          Mon May 25 2026 07:37:05 GMT+0700 (Western Indonesia Time)
+[debug] [2026-05-25T00:37:05.279Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  G:\PROYEK KARSA\FIRE BASE\APLIKASI ABSEN KARSA\APLIKASI ABSEN KARSA
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[info] 
+=== Hosting Setup

@@ -1,0 +1,12 @@
+Copy file ini ke root project VS Code:
+- package.json
+- capacitor.config.ts
+- vite.config.js
+- install_android_capacitor.bat
+- sync_android_after_update.bat
+
+Setelah `npx cap add android`, copy permission dari:
+ANDROID_MANIFEST_PERMISSION_SNIPPET.xml
+
+ke:
+android/app/src/main/AndroidManifest.xml
