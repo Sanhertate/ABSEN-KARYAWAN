@@ -2714,16 +2714,11 @@ function LoginScreen({ onLogin, onForgotPin, syncing, lastSync }) {
       <div className="karsa-glow-orb left-6 top-24 bg-cyan-300" />
       <div className="karsa-glow-orb bottom-24 right-3 bg-fuchsia-400" style={{ animationDelay: "-2s" }} />
       <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-[430px] flex-col justify-center">
-        <div className="mb-6 text-center text-white">
-          <div className="relative mx-auto mb-4 h-28 w-28">
+        <div className="mb-5 text-center text-white">
+          <div className="relative mx-auto h-28 w-28">
             <div className="absolute inset-0 rounded-full bg-white/18 blur-xl" />
             <KarsaLogo className="relative h-full w-full object-contain drop-shadow-2xl" fallbackClassName="relative h-full w-full rounded-full bg-white/10 text-white shadow-2xl" />
           </div>
-          <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] ring-1 ring-white/25 backdrop-blur">
-            <Sparkles size={14} /> Absensi Online
-          </div>
-          <h1 className="text-3xl font-black leading-tight drop-shadow-sm">Karsa Crew App</h1>
-          <p className="mt-2 text-sm font-bold leading-relaxed text-white/70">Login cepat, pantau aktivitas, kirim laporan, semua dalam satu aplikasi.</p>
         </div>
 
         <div className="karsa-genz-panel rounded-[2.2rem] p-5">
@@ -2735,13 +2730,6 @@ function LoginScreen({ onLogin, onForgotPin, syncing, lastSync }) {
                 onLogin(id, pin);
               }}
             >
-              <div className="flex items-center justify-between rounded-[1.5rem] bg-gradient-to-r from-cyan-50 via-violet-50 to-orange-50 p-3 ring-1 ring-white">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-violet-600">Welcome Back</p>
-                  <p className="text-sm font-black text-slate-900">Masuk pakai ID karyawan</p>
-                </div>
-                <AppIcon icon={Fingerprint} size="lg" tone="violet" active />
-              </div>
 
               <div>
                 <label className="mb-1.5 block text-xs font-black uppercase tracking-wide text-slate-500">ID Karyawan</label>
